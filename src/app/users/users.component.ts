@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from './users.service';
 import { Subscription } from 'rxjs';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -10,7 +11,15 @@ import { Subscription } from 'rxjs';
 export class UsersComponent implements OnInit {
   subscription: Subscription;
   response: {};
-  constructor(private userService: UsersService) { }
+  showUserCard = false;
+  constructor(private userService: UsersService, private router: Router) { 
+    this.router.events.subscribe(e => {
+      if (e instanceof NavigationEnd) {
+        console.log(e.url, e.url.includes("/users/"))
+        this.showUserCard = e.url.includes("/users/")
+      }
+    });
+  }
 
   ngOnInit() {
     this.subscription = this.userService.actionStatus().subscribe(response => {

@@ -7,11 +7,15 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-md-9">
+  <div [ngClass]="{'col-md-9': showUserCard,'col-md-12': !showUserCard}">
     <app-users-list></app-users-list>
   </div>
-  <div class="col-md-3">
-    <div class="alert" *ngIf="response" [ngClass]="{'alert-success': response.status==='ACTION_SUCCESS','alert-danger': response.status==='ACTION_FAIL'}" role="alert">
+  <div [ngClass]="{'col-md-3': showUserCard,'d-none': !showUserCard}">
+      <button type="button" class="close" aria-label="Close" routerLink="/users">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    <div class="alert" *ngIf="response" [ngClass]="{'alert-success': response.status==='ACTION_SUCCESS','alert-danger': response.status==='ACTION_FAIL'}"
+      role="alert">
       {{response.message}}
     </div>
     <router-outlet></router-outlet>
