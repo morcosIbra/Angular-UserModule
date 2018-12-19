@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UsersService } from '../../users.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { PopIconComponent } from '../../pop-icon/pop-icon.component';
-import { User } from '../../users-list/user.model';
 import { _localeFactory } from '@angular/core/src/application_module';
+import { LoadingComponent } from '../../popMsgs/loading/loading.component';
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
@@ -55,39 +54,30 @@ export class UserFormComponent implements OnInit {
 
   }
   onSubmit() {
-    // const modalRef = this.modalService.open(PopIconComponent)
-    // //modalRef.close()
-    // modalRef.result.then(
-    //   res => {
-    //     console.log(res);
-
-    //   },
-    //   err => {
-    //     console.log(err);
-
-    //   }
-    // );
-    // modalRef.componentInstance.name = 'World';
-    // setTimeout(()=>{
-
-    // })
+    const loadingMsgRef = this.modalService.open(LoadingComponent);
+    loadingMsgRef.componentInstance.message = 'Saving ' + this.userForm.value.first_name 
+    + ' ' + this.userForm.value.last_name + ' profile';
     if (this.editMode) {
       this.usersService.updateUser(this.id, this.userForm.value).subscribe(
         userData => {
           this.router.navigate(['../'], { relativeTo: this.route });
+          loadingMsgRef.dismiss()
         }, // success path
         error => {
           console.log(error);
+          loadingMsgRef.dismiss()
         }
       );
     } else {
       this.usersService.createUser(this.userForm.value).subscribe(
         userData => {
           console.log(userData);
-          this.router.navigate(['../' + userData['id']], { relativeTo: this.route });
+          // this.router.navigate(['../' + userData['id']], { relativeTo: this.route });
+          loadingMsgRef.dismiss()
         }, // success path
         error => {
           console.log(error);
+          loadingMsgRef.dismiss()
         }
       );
     }

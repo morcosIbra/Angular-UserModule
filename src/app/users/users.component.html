@@ -1,6 +1,9 @@
 <div class="card">
   <div class="card-header">
     Users List
+    <div class="text-right">
+      <a class="btn btn-primary " routerLink="./new">new user</a>
+    </div>
   </div>
 </div>
 <div class="row">
@@ -8,6 +11,9 @@
     <app-users-list></app-users-list>
   </div>
   <div class="col-md-3">
+    <div class="alert" *ngIf="response" [ngClass]="{'alert-success': response.status==='ACTION_SUCCESS','alert-danger': response.status==='ACTION_FAIL'}" role="alert">
+      {{response.message}}
+    </div>
     <router-outlet></router-outlet>
   </div>
 </div>

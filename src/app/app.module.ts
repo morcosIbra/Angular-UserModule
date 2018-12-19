@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { AuthModule } from './auth/auth.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { AuthModule } from './auth/auth.module';
     HomeComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserAnimationsModule,
+    
     AppRoutingModule,
     HttpClientModule,
     AuthModule

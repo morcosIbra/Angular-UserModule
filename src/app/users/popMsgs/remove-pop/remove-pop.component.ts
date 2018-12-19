@@ -3,11 +3,11 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { timeout } from 'q';
 
 @Component({
-  selector: 'app-pop-icon',
-  templateUrl: './pop-icon.component.html',
-  styleUrls: ['./pop-icon.component.css']
+  selector: 'app-remove-pop',
+  templateUrl: './remove-pop.component.html',
+  styleUrls: ['./remove-pop.component.css']
 })
-export class PopIconComponent implements OnInit {
+export class RemovePopComponent implements OnInit {
 
   @Input() name;
   constructor(public modal: NgbActiveModal) { }
