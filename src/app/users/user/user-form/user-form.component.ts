@@ -29,8 +29,8 @@ export class UserFormComponent implements OnInit {
   }
   private initForm() {
     this.userForm = new FormGroup({
-      first_name: new FormControl(null),
-      last_name: new FormControl(null),
+      first_name: new FormControl(null, Validators.required),
+      last_name: new FormControl(null, Validators.required),
       avatar: new FormControl(null),
       job: new FormControl(null)
     });
@@ -39,8 +39,8 @@ export class UserFormComponent implements OnInit {
         userData => {
           console.log(userData);
           this.userForm = new FormGroup({
-            first_name: new FormControl(userData.first_name),
-            last_name: new FormControl(userData.last_name),
+            first_name: new FormControl(userData.first_name, Validators.required),
+            last_name: new FormControl(userData.last_name, Validators.required),
             avatar: new FormControl(userData.avatar),
             job: new FormControl(userData.job)
           });
@@ -53,10 +53,11 @@ export class UserFormComponent implements OnInit {
     }
 
   }
+ 
   onSubmit() {
     const loadingMsgRef = this.modalService.open(LoadingComponent);
-    loadingMsgRef.componentInstance.message = 'Saving ' + this.userForm.value.first_name 
-    + ' ' + this.userForm.value.last_name + ' profile';
+    loadingMsgRef.componentInstance.message = 'Saving ' + this.userForm.value.first_name
+      + ' ' + this.userForm.value.last_name + ' profile';
     if (this.editMode) {
       this.usersService.updateUser(this.id, this.userForm.value).subscribe(
         userData => {

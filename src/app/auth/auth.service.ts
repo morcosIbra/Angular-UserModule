@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { throwError } from 'rxjs';
+import { throwError, Subject } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { URL } from '../shared';
 const SIGNIN = 'SIGNIN';
@@ -9,6 +9,7 @@ const SIGNIN = 'SIGNIN';
 })
 export class AuthService {
   URL: string;
+  private authSubject = new Subject<boolean>();
   constructor(private http: HttpClient) {
     this.URL = URL;
   }
@@ -40,8 +41,30 @@ export class AuthService {
       map(res => {
         console.log(res);
         localStorage.setItem('token', res['token']);
+        this.authSubject.next(true);
       }),
-      catchError(error => this.handleError(error, SIGNIN))
+      catchError(error => {
+        this.authSubject.next(false);
+        return this.handleError(error, SIGNIN)
+      })
     );
+  }
+  signout() {
+    localStorage.removeItem('token');
+    this.authSubject.next(false);
+  }
+  checkAuthenticated() {
+    if (localStorage.getItem('token')) {
+      console.log('token');
+      
+      this.authSubject.next(true);
+    } else {
+      console.log('notoken');
+      
+      this.authSubject.next(false);
+    }
+  }
+  isAuthenticated() {
+    return this.authSubject.asObservable();
   }
 }

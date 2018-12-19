@@ -1,24 +1,23 @@
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-
   <div class="row">
     <div class="col-xs-12">
-
       <div class="form-group">
-        <label for="name">first_name</label>
-        <input type="text" id="first_name" formControlName="first_name" class="form-control">
-        <input type="text" id="last_name" formControlName="last_name" class="form-control">
+        <label for="name">Name</label>
+        <input type="text" id="first_name" formControlName="first_name" class="form-control" placeholder="first name">
+        <input type="text" id="last_name" formControlName="last_name" class="form-control" placeholder="last name">
+        <small class="form-text text-danger" *ngIf="userForm.controls['first_name'].touched && userForm.controls['first_name'].invalid">first name required</small>
+        <small class="form-text text-danger" *ngIf="userForm.controls['last_name'].touched && userForm.controls['last_name'].invalid">last name required</small>
       </div>
       <div class="form-group">
         <label for="name">job</label>
         <input type="text" id="job" formControlName="job" class="form-control">
-
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <button type="submit" class="btn btn-success">Save</button>
-      <a type="button" class="btn btn-danger" routerLink="../" >Cancel</a>
+      <button type="submit" class="btn btn-success" [disabled]="!userForm.valid">Save</button>
+      <a type="button" class="btn btn-danger" routerLink="../">Cancel</a>
     </div>
   </div>
 </form>

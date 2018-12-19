@@ -40,7 +40,6 @@ export class UserRowComponent implements OnInit {
       },
       err => {
         console.log(err);
-        loadingMsgRef.dismiss()
       }
     );
   }
