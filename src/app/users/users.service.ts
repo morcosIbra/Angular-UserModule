@@ -18,7 +18,7 @@ export class UsersService {
   constructor(private http: HttpClient) {
 
     this.URL = URL + 'users/';
-    
+
   }
   private handleError(error: HttpErrorResponse, requestType: string) {
     console.log(error);
@@ -93,12 +93,13 @@ export class UsersService {
   }
   updateUser(id, userData) {
 
-    return this.http.put(this.URL + '/' + id, userData).pipe(
+    return this.http.put(this.URL + id, userData).pipe(
       catchError(error => this.handleError(error, UPDATE_USER))
     );
   }
   removeUser(id) {
-    return this.http.delete(this.URL + '/' + id).pipe(
+    return this.http.delete(this.URL + id).pipe(
+     
       catchError(error => this.handleError(error, REMOVE_USER))
     );
   }

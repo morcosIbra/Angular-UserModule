@@ -4,6 +4,8 @@ import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { UsersService } from '../../users.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PopIconComponent } from '../../pop-icon/pop-icon.component';
+import { User } from '../../users-list/user.model';
+import { _localeFactory } from '@angular/core/src/application_module';
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
@@ -67,7 +69,7 @@ export class UserFormComponent implements OnInit {
     // );
     // modalRef.componentInstance.name = 'World';
     // setTimeout(()=>{
-      
+
     // })
     if (this.editMode) {
       this.usersService.updateUser(this.id, this.userForm.value).subscribe(
@@ -91,8 +93,6 @@ export class UserFormComponent implements OnInit {
     }
 
   }
-  onDelete() { }
-  onCancel() { }
 
 
 }
