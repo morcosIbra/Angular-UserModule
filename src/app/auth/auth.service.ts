@@ -51,6 +51,7 @@ export class AuthService {
   }
   signout() {
     localStorage.removeItem('token');
+    this.authSubject.next(false);
   }
   triggerIsAuthenticated() {
     if (localStorage.getItem('token')) {
