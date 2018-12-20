@@ -18,6 +18,7 @@ export class UsersService {
   URL: string;
   users: User[];
   private actionStatSubject = new Subject<any>();
+  usersChanged = new Subject<User[]>();
   constructor(private http: HttpClient) {
     this.URL = URL + 'users/';
   }
@@ -83,11 +84,17 @@ export class UsersService {
       { params: new HttpParams().set('page', currentPage) } : {};
     return this.http.get(this.URL, options).pipe(
       map(response => {
-        this.users = response['data'];
+        if (currentPage === 1) {
+          this.users = response['data'];
+        } else {
+          this.users = this.users.concat(response['data']);
+        }
         return response;
       }),
       catchError(error => {
-        return error;
+        console.log(error);
+        this.returnResponse(error, GET_USERS);
+        return  throwError('Something bad happened; please try again later.');
       })
     );
   }
@@ -97,45 +104,63 @@ export class UsersService {
         return response['data'];
       }),
       catchError(error => {
-        return error;
+        console.log(error);
+        this.returnResponse(error, GET_USER);
+        return  throwError('Something bad happened; please try again later.');
       })
     );
   }
   createUser(userData) {
     console.log(this.URL, userData);
-    return this.http.post(this.URL, userData).pipe(
+    return this.http.post<User>(this.URL, userData).pipe(
       map(userdata => {
+        this.users.splice(0, 0, userdata);
+        console.log(this.users);
+        
+        this.usersChanged.next(this.users);
         this.returnResponse(false, CREATE_USER);
         return userdata;
       }),
       catchError(error => {
         this.returnResponse(error, CREATE_USER);
-        return error;
+        return  throwError('Something bad happened; please try again later.');;
       })
     );
   }
   updateUser(id, userData) {
+    console.log(id, userData);
+
     return this.http.put<User>(this.URL + id, userData).pipe(
       map(userProfile => {
         console.log(userProfile);
+        const index = this.users.findIndex((user) => user.id === id);
+        this.users[index] = userProfile;
+        console.log(this.users);
+
+        this.usersChanged.next(this.users);
         this.returnResponse(false, UPDATE_USER);
         return userProfile;
       }),
       catchError(error => {
         this.returnResponse(error, UPDATE_USER);
-        return error;
+        return  throwError('Something bad happened; please try again later.');;
       })
     );
   }
   removeUser(id) {
     return this.http.delete(this.URL + id).pipe(
       map(response => {
+        const index = this.users.findIndex((user) => user.id === id);
+        this.users.splice(index, 1);
+        console.log(this.users);
+        
+        this.usersChanged.next(this.users);
         this.returnResponse(false, REMOVE_USER);
         return response;
       }),
       catchError(error => {
         this.returnResponse(error, REMOVE_USER);
-        return error;
+        return  throwError('Something bad happened; please try again later.');;
       })
     );
   }

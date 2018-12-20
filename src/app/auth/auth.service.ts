@@ -51,20 +51,27 @@ export class AuthService {
   }
   signout() {
     localStorage.removeItem('token');
-    this.authSubject.next(false);
   }
-  checkAuthenticated() {
+  triggerIsAuthenticated() {
     if (localStorage.getItem('token')) {
-      console.log('token');
-      
+      console.log('isAuthenticated token');
       this.authSubject.next(true);
     } else {
-      console.log('notoken');
-      
+      console.log('isAuthenticated notoken');
       this.authSubject.next(false);
     }
   }
+
   isAuthenticated() {
     return this.authSubject.asObservable();
+  }
+  check() {
+    if (localStorage.getItem('token')) {
+      console.log('token');
+      return true
+    } else {
+      console.log('notoken');
+      return false
+    }
   }
 }

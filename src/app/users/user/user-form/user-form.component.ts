@@ -4,7 +4,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UsersService } from '../../users.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { _localeFactory } from '@angular/core/src/application_module';
-import { LoadingComponent } from '../../popMsgs/loading/loading.component';
+import { PopupLoadingComponent } from 'src/app/shared/popUp/popUp-loading/popUp-loading.component';
+
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
@@ -55,7 +56,7 @@ export class UserFormComponent implements OnInit {
   }
  
   onSubmit() {
-    const loadingMsgRef = this.modalService.open(LoadingComponent);
+    const loadingMsgRef = this.modalService.open(PopupLoadingComponent);
     loadingMsgRef.componentInstance.message = 'Saving ' + this.userForm.value.first_name
       + ' ' + this.userForm.value.last_name + ' profile';
     if (this.editMode) {
@@ -63,7 +64,7 @@ export class UserFormComponent implements OnInit {
         userData => {
           this.router.navigate(['../'], { relativeTo: this.route });
           loadingMsgRef.dismiss()
-        }, // success path
+        }, 
         error => {
           console.log(error);
           loadingMsgRef.dismiss()
@@ -75,6 +76,7 @@ export class UserFormComponent implements OnInit {
           console.log(userData);
           // this.router.navigate(['../' + userData['id']], { relativeTo: this.route });
           loadingMsgRef.dismiss()
+          this.userForm.reset();
         }, // success path
         error => {
           console.log(error);
