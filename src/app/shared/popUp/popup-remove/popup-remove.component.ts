@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { timeout } from 'q';
 
 @Component({
   selector: 'app-popup-remove',
@@ -14,7 +13,6 @@ export class PopupRemoveComponent implements OnInit {
 
 
   ngOnInit(): void {
-   
   }
 
 

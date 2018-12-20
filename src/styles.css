@@ -15,3 +15,11 @@ mat-spinner circle {
     stroke: #8e44ad!important;
    
   }
+  .modal-dialog{
+    top: 50%;
+    width:10%;
+  }
+  .modal-dialog.modal-lg{
+      top:20%;
+      width:auto;
+  }

@@ -24,7 +24,7 @@ export class UserRowComponent implements OnInit {
     this.router.navigate(['./' + this.user.id + '/edit'], { relativeTo: this.route });
   }
   onRemove() {
-    const modalRef = this.modalService.open(PopupRemoveComponent);
+    const modalRef = this.modalService.open(PopupRemoveComponent,{ size: 'lg' });
     modalRef.componentInstance.name = this.user.first_name + ' ' + this.user.last_name;
     modalRef.result.then(
       res => {
