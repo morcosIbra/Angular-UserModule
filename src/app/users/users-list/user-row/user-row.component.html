@@ -1,9 +1,9 @@
 <li class="list-group-item" routerLinkActive="active" [routerLink]="[user.id]">
-    <div class="col-md-3">
-        <img src="{{user.avatar}}" alt=""> {{user.first_name}} {{user.last_name}}
+    <div class="col-md-5 profile">
+        <img class="avatar" src="{{user.avatar}}" alt=""> {{user.first_name}} {{user.last_name}}
     </div>
-    <div class="col-md-9 text-right">
-        <button type="button" class="btn btn-link" (click)="onEdit($event)" >edit</button>
-        <button type="button" class="btn btn-link" (click)="onRemove()">delete</button>
+    <div class="col-md-7 text-right">
+        <button type="button" class="btn btn-link fa fa-pencil" (click)="onEdit($event)"></button>
+        <button type="button" class="btn btn-link fa fa-trash" (click)="onRemove()"></button>
     </div>
-  </li>
+</li>

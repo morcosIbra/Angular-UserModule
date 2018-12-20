@@ -16,6 +16,7 @@ export class AuthGuard implements CanLoad, CanActivate {
         return false;
     }
     canLoad(): any {
+        console.log('canload= ', this.authService.check());
         if (this.authService.check()) {
             return true;
         }

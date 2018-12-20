@@ -4,8 +4,44 @@
 }
 
   .list-group-item:hover { 
-    background-color: grey;
+    background-color: #dedede;
   }
   .list-group-item.active { 
-    background-color: yellow;
+    background-color:#8e44ad;
+    border-color: #8e44ad;
+    outline-color: #8e44ad;
+    border-radius: 2px;
+   
   }
+  .avatar{
+    width: 100px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  .list-group-item.active .profile{
+    color: white;
+  }
+  .profile{
+    font-size: 15px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #34495e;
+  }
+  .fa{
+    margin-right: 10px;
+    font-size: 20px;
+    color: #8e44ad;
+    text-decoration: none!important;
+  }
+  
+  .list-group-item.active .fa{
+    color: white;
+    background: transparent;
+  }
+  .list-group-item.active .fa:hover,  .fa:hover{
+    background: #aeabab;
+  }
+ 

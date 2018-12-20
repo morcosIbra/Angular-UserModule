@@ -1,0 +1,32 @@
+.navbar.navbar-expand-lg.navbar-light{
+    background: white;
+}
+.navbar-light .navbar-brand{
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
+    color:#8e44ad;
+}
+ul.navbar-nav li.nav-item a.nav-link{
+    font-size: 15px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
+}
+form.form-inline{
+    margin-right:20px;
+}
+.form-inline ul li{
+    margin-right:10px;
+    min-width: 80px;
+}
+.navbar-light .navbar-nav .active>.nav-link{
+    color: #ffffff;
+}
+.navbar-light .navbar-nav .active{
+    background: #8e44ad;
+    border-radius: 20px;
+   
+}

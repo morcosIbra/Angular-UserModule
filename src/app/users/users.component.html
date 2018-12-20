@@ -1,23 +1,28 @@
-<div class="card">
-  <div class="card-header">
-    Users List
-    <div class="text-right">
-      <a class="btn btn-primary " routerLink="./new">new user</a>
+<div class="row page-header">
+  <div class="container ">
+    <div class="row">
+      <div class="col-md-3 title">Users List</div>
+      <div class="col-md-9 text-right">
+        <a class="btn btn-primary " routerLink="./new">new user</a>
+      </div>
     </div>
   </div>
 </div>
-<div class="row">
-  <div [ngClass]="{'col-md-9': showUserCard,'col-md-12': !showUserCard}">
-    <app-users-list></app-users-list>
-  </div>
-  <div [ngClass]="{'col-md-3': showUserCard,'d-none': !showUserCard}">
-      <button type="button" class="close" aria-label="Close" routerLink="/users">
-          <span aria-hidden="true">&times;</span>
-        </button>
-    <div class="alert" *ngIf="response" [ngClass]="{'alert-success': response.status==='ACTION_SUCCESS','alert-danger': response.status==='ACTION_FAIL'}"
-      role="alert">
-      {{response.message}}
+<div id="users-list" class="container">
+  <div class="row">
+    <div [ngClass]="{'col-md-7': showUserCard,'col-md-12': !showUserCard}">
+      <app-users-list></app-users-list>
     </div>
-    <router-outlet></router-outlet>
+    <div [ngClass]="{'col-md-5': showUserCard,'d-none': !showUserCard}">
+      <button type="button" class="close" aria-label="Close" routerLink="/users">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="alert" *ngIf="response" [ngClass]="{'alert-success': response.status==='ACTION_SUCCESS','alert-danger': response.status==='ACTION_FAIL'}"
+        role="alert">
+        {{response.message}}
+      </div>
+      <router-outlet></router-outlet>
+    </div>
   </div>
+
 </div>

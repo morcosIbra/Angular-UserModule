@@ -6,7 +6,9 @@ import { HomeComponent } from './core/home/home.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'users', loadChildren: './users/users.module#UsersModule', canLoad: [AuthGuard] }
+  {
+    path: 'users', loadChildren: './users/users.module#UsersModule', canLoad: [AuthGuard]
+  }
   // { path: '**', component: PageNotFoundComponent },
 ];
 

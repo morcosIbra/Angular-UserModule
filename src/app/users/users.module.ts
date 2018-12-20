@@ -9,13 +9,13 @@ import { UsersRoutingModule } from './users-routing.module';
 import { UserComponent } from './user/user.component';
 import { UsersComponent } from './users.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 @NgModule({
   imports: [
     CommonModule,
     UsersRoutingModule,
     ReactiveFormsModule,
-    NgbModule
+    MatProgressSpinnerModule,
   ],
   declarations: [UsersListComponent, UserRowComponent,
     UserComponent, UserFormComponent, UserProfileComponent,

@@ -3,14 +3,14 @@ import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http'
 import { throwError, Subject } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { User } from './users-list/user.model';
-import { URL } from '../shared'
+import { URL } from '../shared';
 const GET_USERS = 'GET_USERS';
 const GET_USER = 'GET_USER';
 const CREATE_USER = 'CREATE_USER';
 const UPDATE_USER = 'UPDATE_USER';
 const REMOVE_USER = 'REMOVE_USER';
 export const ACTION_SUCCESS = 'ACTION_SUCCESS';
-export const ACTION_FAIL = 'ACTION_FAIL'
+export const ACTION_FAIL = 'ACTION_FAIL';
 @Injectable({
   providedIn: 'root'
 })
@@ -33,24 +33,23 @@ export class UsersService {
 
     if (!error) {
       switch (requestType) {
-
         case CREATE_USER:
-          message = 'User created successfully'
+          message = 'User created successfully';
           break;
         case UPDATE_USER:
-          message = 'User updated successfully'
+          message = 'User updated successfully';
           break;
         case REMOVE_USER:
-          message = 'User removed successfully'
+          message = 'User removed successfully';
           break;
         default:
-          message = 'success!'
+          message = 'success!';
           break;
       }
     } else {
       if (error.status === 0) {
         // A client-side or network error occurred. Handle it accordingly.
-        message = 'Please check network reachability and try again.'
+        message = 'Please check network reachability and try again.';
       } else {
         // The backend returned an unsuccessful response code.
         switch (requestType) {
@@ -94,7 +93,7 @@ export class UsersService {
       catchError(error => {
         console.log(error);
         this.returnResponse(error, GET_USERS);
-        return  throwError('Something bad happened; please try again later.');
+        return throwError('Something bad happened; please try again later.');
       })
     );
   }
@@ -106,7 +105,7 @@ export class UsersService {
       catchError(error => {
         console.log(error);
         this.returnResponse(error, GET_USER);
-        return  throwError('Something bad happened; please try again later.');
+        return throwError('Something bad happened; please try again later.');
       })
     );
   }
@@ -116,14 +115,14 @@ export class UsersService {
       map(userdata => {
         this.users.splice(0, 0, userdata);
         console.log(this.users);
-        
+
         this.usersChanged.next(this.users);
         this.returnResponse(false, CREATE_USER);
         return userdata;
       }),
       catchError(error => {
         this.returnResponse(error, CREATE_USER);
-        return  throwError('Something bad happened; please try again later.');;
+        return throwError('Something bad happened; please try again later.');;
       })
     );
   }
@@ -134,6 +133,7 @@ export class UsersService {
       map(userProfile => {
         console.log(userProfile);
         const index = this.users.findIndex((user) => user.id === id);
+        userProfile['id'] = id;
         this.users[index] = userProfile;
         console.log(this.users);
 
@@ -143,7 +143,7 @@ export class UsersService {
       }),
       catchError(error => {
         this.returnResponse(error, UPDATE_USER);
-        return  throwError('Something bad happened; please try again later.');;
+        return throwError('Something bad happened; please try again later.');;
       })
     );
   }
@@ -153,14 +153,14 @@ export class UsersService {
         const index = this.users.findIndex((user) => user.id === id);
         this.users.splice(index, 1);
         console.log(this.users);
-        
+
         this.usersChanged.next(this.users);
         this.returnResponse(false, REMOVE_USER);
         return response;
       }),
       catchError(error => {
         this.returnResponse(error, REMOVE_USER);
-        return  throwError('Something bad happened; please try again later.');;
+        return throwError('Something bad happened; please try again later.');;
       })
     );
   }

@@ -16,6 +16,7 @@ export class UsersListComponent implements OnInit {
   currentPage: number;
   totalPages: number;
   loadingMsgRef: any;
+  loadingMore = false;
   constructor(private usersService: UsersService, private modalService: NgbModal) { }
 
   ngOnInit() {
@@ -45,12 +46,14 @@ export class UsersListComponent implements OnInit {
   }
   loadMoreUsers() {
     if (this.currentPage < this.totalPages) {
+      this.loadingMore = true;
       this.currentPage++;
       this.usersService.getUsers(this.currentPage).subscribe(
         users => {
           this.users = this.users.concat(users['data']);
           this.totalPages = users['total_pages'];
           console.log(this.users);
+          this.loadingMore = false;
         },
         error => {
           console.log(error);
