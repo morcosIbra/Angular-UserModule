@@ -8,3 +8,10 @@ body{
 .btn.disabled, .btn:disabled{
     cursor:not-allowed ;
 }
+mat-spinner{
+    margin:0 auto;
+}
+mat-spinner circle {
+    stroke: #8e44ad!important;
+   
+  }

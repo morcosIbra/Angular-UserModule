@@ -4,6 +4,6 @@
   </ul>
   <div class="card-body text-center">
     <button class="btn btn-primary" (click)="loadMoreUsers()" *ngIf="currentPage<totalPages && !loadingMore">load more</button>
-    <mat-spinner *ngIf="loadingMore"></mat-spinner>
+    <mat-spinner  [diameter]="40" *ngIf="loadingMore"></mat-spinner>
   </div>
 </div>
