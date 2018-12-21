@@ -9,7 +9,6 @@ const appRoutes: Routes = [
   {
     path: 'users', loadChildren: './users/users.module#UsersModule', canLoad: [AuthGuard]
   }
-  // { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({

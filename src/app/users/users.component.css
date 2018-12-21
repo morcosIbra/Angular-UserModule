@@ -28,3 +28,13 @@ padding-bottom:15px;
   font-stretch: normal;
   letter-spacing: normal;
 }
+.alert-row .container{
+  padding-right:0px;
+}
+.alert {
+  width: max-content;
+    float: right;
+}
+.zero-height{
+  height: 0px;
+}

@@ -8,19 +8,26 @@
     </div>
   </div>
 </div>
+<div class="row alert-row" *ngIf="response" [ngClass]="{'zero-height': response.status===undefined}">
+  <div class="container text-right">
+    <div class="alert" role="alert" [ngClass]="{'alert-success': response.status==='ACTION_SUCCESS','alert-danger': response.status==='ACTION_FAIL'}">
+      {{response.message}}
+    </div>
+  </div>
+</div>
+
 <div id="users-list" class="container">
+  
   <div class="row">
     <div [ngClass]="{'col-md-7': showUserCard,'col-md-12': !showUserCard}">
       <app-users-list></app-users-list>
     </div>
+
     <div [ngClass]="{'col-md-5': showUserCard,'d-none': !showUserCard}">
       <button type="button" class="close" aria-label="Close" routerLink="/users">
         <span aria-hidden="true">&times;</span>
       </button>
-      <div class="alert" *ngIf="response" [ngClass]="{'alert-success': response.status==='ACTION_SUCCESS','alert-danger': response.status==='ACTION_FAIL'}"
-        role="alert">
-        {{response.message}}
-      </div>
+
       <router-outlet></router-outlet>
     </div>
   </div>

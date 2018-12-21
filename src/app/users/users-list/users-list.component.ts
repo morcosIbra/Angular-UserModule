@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../users.service';
 import { User } from './user.model';
 import { Subscription } from 'rxjs';
-import { PopupLoadingComponent } from 'src/app/shared/popUp/popUp-loading/popUp-loading.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PopupLoadingComponent } from 'src/app/shared/popup-loading/popup-loading.component';
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',

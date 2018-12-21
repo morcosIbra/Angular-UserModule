@@ -1,0 +1,23 @@
+.form-control {
+    display: inline-block;
+    width: auto;
+}
+.btn{
+    font-size: 15px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
+}
+.btn.btn-success{
+    background: #8e44ad;
+    border:#8e44ad;
+    
+    color:white;
+  }
+  .btn.btn-secondary{
+    background: white;
+    border:1px solid #6c757d;
+    float: right;
+    color:#6c757d;
+  }

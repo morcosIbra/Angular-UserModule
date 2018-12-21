@@ -12,19 +12,24 @@ export class UserProfileComponent implements OnInit {
   id: number;
   user: User;
   constructor(private route: ActivatedRoute, private usersService: UsersService) {
+   
     this.route.params.subscribe(
       (params: Params) => {
         this.id = +params['id'];
         console.log(this.id);
-        this.usersService.getUser(this.id).subscribe(
-          userData => {
-            console.log(userData);
-            this.user = userData;
-          }, // success path
-          error => {
-            console.log(error);
-          }
-        );
+        this.user = this.usersService.getExistUser(this.id)
+        if (this.user === null) {
+          this.usersService.getUser(this.id).subscribe(
+            userData => {
+              console.log(userData);
+              this.user = userData;
+            }, // success path
+            error => {
+              console.log(error);
+            }
+          );
+        }
+
       }
     );
   }

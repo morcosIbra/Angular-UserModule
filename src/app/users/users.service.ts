@@ -3,7 +3,7 @@ import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http'
 import { throwError, Subject } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { User } from './users-list/user.model';
-import { URL } from '../shared';
+import { URL } from '../shared/shared-const';
 const GET_USERS = 'GET_USERS';
 const GET_USER = 'GET_USER';
 const CREATE_USER = 'CREATE_USER';
@@ -96,6 +96,22 @@ export class UsersService {
         return throwError('Something bad happened; please try again later.');
       })
     );
+  }
+  getExistUser(id) {
+    console.log(this.users);
+    if (this.users === undefined) {
+      return null;
+    } else {
+      const index = this.users.findIndex((user) => user.id === id);
+      if (index !== -1) {
+        return this.users[index];
+      } else {
+        return null;
+      }
+    }
+
+
+
   }
   getUser(id): any {
     return this.http.get(this.URL + id).pipe(

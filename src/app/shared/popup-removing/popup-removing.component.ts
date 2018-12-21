@@ -2,11 +2,11 @@ import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-popup-remove',
-  templateUrl: './popup-remove.component.html',
-  styleUrls: ['./popup-remove.component.css']
+  selector: 'app-popup-removing',
+  templateUrl: './popup-removing.component.html',
+  styleUrls: ['./popup-removing.component.css']
 })
-export class PopupRemoveComponent implements OnInit {
+export class PopupRemovingComponent implements OnInit {
 
   @Input() name;
   constructor(public modal: NgbActiveModal) { }
@@ -14,6 +14,5 @@ export class PopupRemoveComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 
 }

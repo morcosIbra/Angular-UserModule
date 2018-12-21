@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PopIconComponent } from './pop-icon.component';
+import { PopupRemovingComponent } from './popup-removing.component';
 
-describe('PopIconComponent', () => {
-  let component: PopIconComponent;
-  let fixture: ComponentFixture<PopIconComponent>;
+describe('PopupRemovingComponent', () => {
+  let component: PopupRemovingComponent;
+  let fixture: ComponentFixture<PopupRemovingComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PopIconComponent ]
+      declarations: [ PopupRemovingComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PopIconComponent);
+    fixture = TestBed.createComponent(PopupRemovingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

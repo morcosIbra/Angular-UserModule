@@ -4,7 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UsersService } from '../../users.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { _localeFactory } from '@angular/core/src/application_module';
-import { PopupLoadingComponent } from 'src/app/shared/popUp/popUp-loading/popUp-loading.component';
+import { PopupLoadingComponent } from 'src/app/shared/popup-loading/popup-loading.component';
 
 @Component({
   selector: 'app-user-form',

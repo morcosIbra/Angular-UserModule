@@ -27,7 +27,7 @@ export class UsersComponent implements OnInit {
       this.response = response;
       setTimeout(() => {
         this.response = {};
-      }, 5000)
+      }, 3000)
     });
   }
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError, Subject } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { URL } from '../shared';
+import { URL } from '../shared/shared-const';
 const SIGNIN = 'SIGNIN';
 @Injectable({
   providedIn: 'root'

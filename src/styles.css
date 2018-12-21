@@ -23,3 +23,14 @@ mat-spinner circle {
       top:20%;
       width:auto;
   }
+  .form-control:focus{
+    border-color:#cc89e8;
+    box-shadow: 0 0 0 0.2rem #d3cad6;
+  }
+  secondary:not(:disabled):not(.disabled):active:focus{
+    box-shadow: 0 0 0 0.2rem #d3cad6;
+  }
+  .btn-outline-secondary:not(:disabled):not(.disabled):active,.btn-outline-secondary:hover{
+    background-color: #8e44ad;
+    border-color: #8e44ad;
+  }

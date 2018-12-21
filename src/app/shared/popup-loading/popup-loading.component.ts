@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -13,10 +13,7 @@ export class PopupLoadingComponent implements OnInit {
   constructor(public modal: NgbActiveModal) { }
 
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
-  open(content) {
-    this.modalService.open(content);
-  }
-  
+
 }
