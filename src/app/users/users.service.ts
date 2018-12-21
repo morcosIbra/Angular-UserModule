@@ -117,7 +117,9 @@ export class UsersService {
     if (this.users === undefined) {
       return null;
     } else {
-      const index = this.users.findIndex((user) => user.id === id);
+      const index = this.users.findIndex((user) => user.id == id);
+      console.log(index,id);
+      
       if (index !== -1) {
         return this.users[index];
       } else {
@@ -166,7 +168,7 @@ export class UsersService {
     return this.http.put<User>(this.URL + id, userData).pipe(
       map(userProfile => {
         console.log(userProfile);
-        const index = this.users.findIndex((user) => user.id === id);
+        const index = this.users.findIndex((user) => user.id == id);
         userProfile['id'] = id;
         this.users[index] = userProfile;
         console.log(this.users);
@@ -186,7 +188,7 @@ export class UsersService {
   removeUser(id) {
     return this.http.delete(this.URL + id).pipe(
       map(response => {
-        const index = this.users.findIndex((user) => user.id === id);
+        const index = this.users.findIndex((user) => user.id == id);
         this.users.splice(index, 1);
         console.log(this.users);
 

@@ -40,6 +40,9 @@ export class UserRowComponent implements OnInit {
             console.log(res);
             this.router.navigate(['/users']);
             loadingMsgRef.dismiss()
+          },
+          error=>{
+            loadingMsgRef.dismiss()
           }
         );
       },

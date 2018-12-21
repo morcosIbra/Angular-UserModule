@@ -24,8 +24,7 @@ export class UsersListComponent implements OnInit {
     setTimeout(() => {
       this.loadingMsgRef = this.modalService.open(PopupLoadingComponent);
       this.loadingMsgRef.componentInstance.message = 'Loading Users';
-    });
-    //request only first page from users at initialisation
+      //request only first page from users at initialisation
     this.currentPage = 1;
     this.usersService.getUsers(this.currentPage).subscribe(
       users => {
@@ -45,9 +44,11 @@ export class UsersListComponent implements OnInit {
         this.users = users;
       }
     );
+    });
+    
   }
   
-  //get aother pages of users if not exceeded the max total pages
+  //get other pages of users if not exceeded the max total pages
   loadMoreUsers() {
     if (this.currentPage < this.totalPages) {
       this.loadingMore = true;
@@ -61,6 +62,8 @@ export class UsersListComponent implements OnInit {
         },
         error => {
           console.log(error);
+          this.currentPage--;
+          this.loadingMore = false;
         }
       );
     }
