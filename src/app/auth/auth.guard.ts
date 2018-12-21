@@ -6,7 +6,8 @@ import { Observable, Subscriber } from 'rxjs';
 
 @Injectable()
 export class AuthGuard implements CanLoad, CanActivate {
-
+    //check if authenticated pass true
+    //not authenticated pass false and route user to sign in page
     constructor(private authService: AuthService, private router: Router) { }
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
         if (this.authService.check()) {

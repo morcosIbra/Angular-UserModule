@@ -28,6 +28,7 @@ export class UserFormComponent implements OnInit {
         }
       );
   }
+  //detect update exist user or create new one and then initialise form
   private initForm() {
     this.userForm = new FormGroup({
       first_name: new FormControl(null, Validators.required),
@@ -49,12 +50,14 @@ export class UserFormComponent implements OnInit {
         }, // success path
         error => {
           console.log(error);
+          this.router.navigate(['/users'], { relativeTo: this.route });
         }
       );
     }
 
   }
- 
+ //on submit if success and exist user ---> route to users-list page 
+ // if error happened stay at user-form page
   onSubmit() {
     const loadingMsgRef = this.modalService.open(PopupLoadingComponent);
     loadingMsgRef.componentInstance.message = 'Saving ' + this.userForm.value.first_name

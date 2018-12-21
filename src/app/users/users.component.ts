@@ -12,7 +12,9 @@ export class UsersComponent implements OnInit {
   subscription: Subscription;
   response: {};
   showUserCard = false;
-  constructor(private userService: UsersService, private router: Router) { 
+  constructor(private userService: UsersService, private router: Router) {
+    //detect if user-form or user-profile 
+    //triggered then shrink width of users list by showUserCard flag  
     this.router.events.subscribe(e => {
       if (e instanceof NavigationEnd) {
         console.log(e.url, e.url.includes("/users/"))
@@ -22,6 +24,8 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit() {
+    //listen to messages come from userService.actionStatus() after any user action taken
+    //and displayed for 3 seconds only
     this.subscription = this.userService.actionStatus().subscribe(response => {
       console.log('message= ', response);
       this.response = response;

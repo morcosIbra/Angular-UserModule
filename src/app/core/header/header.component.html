@@ -18,10 +18,10 @@
           <a class="nav-link" routerLink="/users">Users</a>
         </li>
         <li class="nav-item" routerLinkActive="active" *ngIf="!(authSutateObs |async)">
-          <a class="nav-link" routerLink="/signin">Signin</a>
+          <a class="nav-link" routerLink="/signin">Sign in</a>
         </li>
         <li class="nav-item" routerLinkActive="active" *ngIf="(authSutateObs |async)">
-          <a class="nav-link btn" (click)="signout()">Signout</a>
+          <a class="nav-link btn" (click)="signout()">Sign out</a>
         </li>
       </ul>
     </form>

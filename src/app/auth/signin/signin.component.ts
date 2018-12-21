@@ -11,17 +11,20 @@ import { log } from 'util';
 })
 export class SigninComponent implements OnInit {
   signinForm: FormGroup;
+  errorMsg: string;
   constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) { }
   ngOnInit() {
+    // initialise signin form
     this.signinForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', Validators.required)
     });
     console.log(this.signinForm);
-    
+
   }
 
   onSignin() {
+    this.errorMsg = null
     const email = this.signinForm.value.email;
     const password = this.signinForm.value.password;
     this.authService.signin(email, password).subscribe(
@@ -31,7 +34,7 @@ export class SigninComponent implements OnInit {
       },
       error => {
         console.log(error);
-
+        this.errorMsg = error
       }
     )
   }

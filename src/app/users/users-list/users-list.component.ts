@@ -20,10 +20,12 @@ export class UsersListComponent implements OnInit {
   constructor(private usersService: UsersService, private modalService: NgbModal) { }
 
   ngOnInit() {
+    //popup loading before get users and closed after usersService.getUsers response
     setTimeout(() => {
       this.loadingMsgRef = this.modalService.open(PopupLoadingComponent);
       this.loadingMsgRef.componentInstance.message = 'Loading Users';
     });
+    //request only first page from users at initialisation
     this.currentPage = 1;
     this.usersService.getUsers(this.currentPage).subscribe(
       users => {
@@ -44,6 +46,8 @@ export class UsersListComponent implements OnInit {
       }
     );
   }
+  
+  //get aother pages of users if not exceeded the max total pages
   loadMoreUsers() {
     if (this.currentPage < this.totalPages) {
       this.loadingMore = true;

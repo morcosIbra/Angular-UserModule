@@ -17,12 +17,16 @@ export class UserRowComponent implements OnInit {
 
   ngOnInit() {
   }
+  //route user to user-form
   onEdit(e) {
     e.stopPropagation();
     console.log(this.route);
 
     this.router.navigate(['./' + this.user.id + '/edit'], { relativeTo: this.route });
   }
+  
+  //pop up remove confirm message if yes call loading popup and usersService.removeUser
+  //if not no action taken
   onRemove() {
     const modalRef = this.modalService.open(PopupRemovingComponent,{ size: 'lg' });
     modalRef.componentInstance.name = this.user.first_name + ' ' + this.user.last_name;

@@ -13,6 +13,7 @@ export class AuthService {
   constructor(private http: HttpClient) {
     this.URL = URL;
   }
+  // handle error return error message and called from signin at error callback
   private handleError(error: HttpErrorResponse, requestType: string) {
     console.log(error);
     let returnMsg: string;
@@ -53,6 +54,7 @@ export class AuthService {
     localStorage.removeItem('token');
     this.authSubject.next(false);
   }
+  // try to trigger authSubject when needed e.g. after view initialised at header component
   triggerIsAuthenticated() {
     if (localStorage.getItem('token')) {
       console.log('isAuthenticated token');

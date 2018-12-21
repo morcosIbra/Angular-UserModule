@@ -4,6 +4,7 @@ import { throwError, Subject } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { User } from './users-list/user.model';
 import { URL } from '../shared/shared-const';
+//user actions for CRUD operations
 const GET_USERS = 'GET_USERS';
 const GET_USER = 'GET_USER';
 const CREATE_USER = 'CREATE_USER';
@@ -14,6 +15,11 @@ export const ACTION_FAIL = 'ACTION_FAIL';
 @Injectable({
   providedIn: 'root'
 })
+/*
+/General procedures for all server requests
+/Any request sent to server
+/success/fail--> callback and then return message to users component
+*/
 export class UsersService {
   URL: string;
   users: User[];
@@ -22,9 +28,14 @@ export class UsersService {
   constructor(private http: HttpClient) {
     this.URL = URL + 'users/';
   }
+
+  //return messages to users component to be displayed
   actionStatus() {
     return this.actionStatSubject.asObservable();
   }
+
+  // detect action taken() whether fail or success and what action taken 
+  //and call actionStatSubject.next with message
   private returnResponse(error: any, requestType: string) {
     console.log(error);
     let message: string;
@@ -78,6 +89,8 @@ export class UsersService {
       action: requestType, status: status, message: message
     });
   }
+
+  //check which page needed and call it from server
   getUsers(currentPage) {
     const options = currentPage ?
       { params: new HttpParams().set('page', currentPage) } : {};
@@ -97,6 +110,8 @@ export class UsersService {
       })
     );
   }
+
+  //get user if exist in this.users only
   getExistUser(id) {
     console.log(this.users);
     if (this.users === undefined) {
@@ -109,10 +124,9 @@ export class UsersService {
         return null;
       }
     }
-
-
-
   }
+
+  //get user from server by id
   getUser(id): any {
     return this.http.get(this.URL + id).pipe(
       map(response => {
@@ -125,6 +139,8 @@ export class UsersService {
       })
     );
   }
+
+  //after creating user from database trigger usersChanged to update users-list component
   createUser(userData) {
     console.log(this.URL, userData);
     return this.http.post<User>(this.URL, userData).pipe(
@@ -142,6 +158,8 @@ export class UsersService {
       })
     );
   }
+
+  //after updating user from database trigger usersChanged to update users-list component
   updateUser(id, userData) {
     console.log(id, userData);
 
@@ -163,6 +181,8 @@ export class UsersService {
       })
     );
   }
+
+  //after removing user from database trigger usersChanged to update users-list component
   removeUser(id) {
     return this.http.delete(this.URL + id).pipe(
       map(response => {
