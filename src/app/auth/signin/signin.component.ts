@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router, RouterStateSnapshot, ActivatedRoute } from '@angular/router';
+import { log } from 'util';
 
 @Component({
   selector: 'app-signin',
@@ -9,13 +10,20 @@ import { Router, RouterStateSnapshot, ActivatedRoute } from '@angular/router';
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent implements OnInit {
-
+  signinForm: FormGroup;
   constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) { }
-  ngOnInit() { }
+  ngOnInit() {
+    this.signinForm = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', Validators.required)
+    });
+    console.log(this.signinForm);
+    
+  }
 
-  onSignin(form: NgForm) {
-    const email = form.value.email;
-    const password = form.value.password;
+  onSignin() {
+    const email = this.signinForm.value.email;
+    const password = this.signinForm.value.password;
     this.authService.signin(email, password).subscribe(
       res => {
         console.log(res);

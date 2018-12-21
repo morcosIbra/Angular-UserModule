@@ -1,11 +1,21 @@
-<form (ngSubmit)="onSignin(f)" #f="ngForm">
-  <div class="form-group">
-    <label for="email">Mail</label>
-    <input type="email" id="email" name="email" ngModel class="form-control">
+<div class="container">
+    <h4 style="margin-top:30px;text-align: center;">Signin with your favorite username and password, this is just a demo!</h4>
+  <div class="col-md-6 offset-md-3" style="margin-top:30px;">
+    
+    <form [formGroup]="signinForm" (ngSubmit)="onSignin()">
+      <div class="form-group">
+        <label for="email">Mail</label>
+        <input type="email" id="email" name="email" formControlName="email" class="form-control">
+        <small class="form-text text-danger" *ngIf="signinForm.controls?.email?.invalid && signinForm.controls?.email?.touched">email required, please note format e.g. example@example-domain</small>   
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" formControlName="password" class="form-control">
+        <small class="form-text text-danger" *ngIf="signinForm.controls?.password?.invalid && signinForm.controls?.password?.touched">password required</small>   
+     
+      </div>
+      <button class="btn btn-primary" type="submit"  [disabled]="!signinForm.valid">Sign In</button>
+    </form>
   </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" ngModel class="form-control">
-  </div>
-  <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Sign In</button>
-</form>
+
+</div>
