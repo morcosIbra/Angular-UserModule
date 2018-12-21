@@ -60,8 +60,7 @@ export class UserFormComponent implements OnInit {
  // if error happened stay at user-form page
   onSubmit() {
     const loadingMsgRef = this.modalService.open(PopupLoadingComponent);
-    loadingMsgRef.componentInstance.message = 'Saving ' + this.userForm.value.first_name
-      + ' ' + this.userForm.value.last_name + ' profile';
+    loadingMsgRef.componentInstance.message = 'Saving user' ;
     if (this.editMode) {
       this.usersService.updateUser(this.id, this.userForm.value).subscribe(
         userData => {

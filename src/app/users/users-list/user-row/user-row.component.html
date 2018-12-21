@@ -1,5 +1,6 @@
 <li class="list-group-item" routerLinkActive="active" [routerLink]="[user.id]">
     <div class="col-md-9 profile">
+        <img class="avatar" *ngIf="!user.avatar" src="/src/images/user-dummy.png" alt="">
         <img class="avatar" src="{{user.avatar}}" alt=""> {{user.first_name}} {{user.last_name}}
     </div>
     <div class="col-md-3 text-right">

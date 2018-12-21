@@ -6,7 +6,6 @@ import { UserRowComponent } from './users-list/user-row/user-row.component';
 import { UserFormComponent } from './user/user-form/user-form.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { UsersRoutingModule } from './users-routing.module';
-import { UserComponent } from './user/user.component';
 import { UsersComponent } from './users.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -17,8 +16,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     ReactiveFormsModule,
     MatProgressSpinnerModule,
   ],
-  declarations: [UsersListComponent, UserRowComponent,
-    UserComponent, UserFormComponent, UserProfileComponent,
+  declarations: [UsersListComponent, UserRowComponent, UserFormComponent, UserProfileComponent,
     UsersComponent]
 })
 export class UsersModule { }
