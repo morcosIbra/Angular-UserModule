@@ -10,15 +10,19 @@ export class AuthGuard implements CanLoad, CanActivate {
     //not authenticated pass false and route user to sign in page
     constructor(private authService: AuthService, private router: Router) { }
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
+        console.log('canActivate can load');
         if (this.authService.check()) {
+           
+            
             return true;
         }
         this.router.navigate(['/signin']);
         return false;
     }
     canLoad(): any {
-        console.log('canload= ', this.authService.check());
+        console.log('auth guard can load');
         if (this.authService.check()) {
+            console.log('auth guard can load');
             return true;
         }
         this.router.navigate(['/signin']);

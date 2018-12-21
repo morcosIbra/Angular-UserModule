@@ -5,6 +5,3 @@ export interface User {
   job: string;
   avatar: string;
 }
-export class User {
-
-}
