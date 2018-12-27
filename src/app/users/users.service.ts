@@ -108,7 +108,7 @@ export class UsersService {
         this.returnResponse(error, GET_USERS);
         return throwError('Something bad happened; please try again later.');
       })
-    );
+    )
   }
 
   //get user if exist in this.users only

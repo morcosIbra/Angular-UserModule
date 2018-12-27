@@ -53,6 +53,7 @@ export class UserFormComponent implements OnInit {
           this.router.navigate(['/users'], { relativeTo: this.route });
         }
       );
+     // this.usersService.getUser(this.id)
     }
 
   }
@@ -86,8 +87,7 @@ export class UserFormComponent implements OnInit {
         }
       );
     }
-
   }
-
+  
 
 }
