@@ -7,7 +7,7 @@ import { log } from 'util';
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css']
+  styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
   signinForm: FormGroup;
@@ -16,8 +16,8 @@ export class SigninComponent implements OnInit {
   ngOnInit() {
     // initialise signin form
     this.signinForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', Validators.required)
+      email: new FormControl('eve.holt@reqres.in', [Validators.required, Validators.email]),
+      password: new FormControl('cityslicka', Validators.required)
     });
     console.log(this.signinForm);
 

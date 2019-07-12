@@ -9,7 +9,7 @@ import { PopupLoadingComponent } from 'src/app/shared/popup-loading/popup-loadin
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
-  styleUrls: ['./user-form.component.css']
+  styleUrls: ['./user-form.component.scss']
 })
 export class UserFormComponent implements OnInit {
   id: number;

@@ -1,0 +1,43 @@
+@import '../../variables.scss';
+.row.page-header {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  background-color: $base-grey;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+.page-header .title {
+  font-size: 30px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #34495e;
+}
+
+#users-list.container {
+  background: white;
+  border-radius: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+.btn {
+  background: $base-violet;
+  border: $base-violet;
+  font-size: 15px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+}
+.alert-row .container {
+  padding-right: 0px;
+}
+.alert {
+  width: max-content;
+  float: right;
+}
+.zero-height {
+  height: 0px;
+}

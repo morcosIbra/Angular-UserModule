@@ -4,7 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-popup-loading',
   templateUrl: './popup-loading.component.html',
-  styleUrls: ['./popup-loading.component.css']
+  styleUrls: ['./popup-loading.component.scss']
 })
 export class PopupLoadingComponent implements OnInit {
 

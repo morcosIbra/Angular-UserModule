@@ -2,8 +2,8 @@
   <ul class="list-group list-group-flush">
     <app-user-row [user]="user" *ngFor="let user of users; let i=index"></app-user-row>
   </ul>
-  <div class="card-body text-center">
-    <button class="btn btn-primary" (click)="loadMoreUsers()" *ngIf="currentPage<totalPages && !loadingMore">load more</button>
-    <mat-spinner  [diameter]="40" *ngIf="loadingMore"></mat-spinner>
+  <div class="card-body text-center" *ngIf="currentPage<totalPages">
+      <i class="fa fa-arrow-circle-down"  (click)="loadMoreUsers()" *ngIf="!loadingMore"></i>
+    <mat-spinner  [diameter]="30" *ngIf="loadingMore"></mat-spinner>
   </div>
 </div>

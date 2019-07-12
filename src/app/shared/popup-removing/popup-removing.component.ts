@@ -4,7 +4,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-popup-removing',
   templateUrl: './popup-removing.component.html',
-  styleUrls: ['./popup-removing.component.css']
+  styleUrls: ['./popup-removing.component.scss']
 })
 export class PopupRemovingComponent implements OnInit {
 

@@ -1,3 +1,4 @@
+@import '../../../variables.scss';
 .navbar.navbar-expand-lg.navbar-light{
     background: white;
 }
@@ -6,7 +7,7 @@
     font-style: normal;
     font-stretch: normal;
     letter-spacing: normal;
-    color:#8e44ad;
+    color:$base-violet;
 }
 ul.navbar-nav li.nav-item a.nav-link{
     font-size: 15px;
@@ -26,7 +27,7 @@ form.form-inline{
     color: #ffffff;
 }
 .navbar-light .navbar-nav .active{
-    background: #8e44ad;
+    background: $base-violet;
     border-radius: 20px;
    
 }

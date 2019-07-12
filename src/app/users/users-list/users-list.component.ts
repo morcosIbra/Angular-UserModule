@@ -8,7 +8,7 @@ import { PopupLoadingComponent } from 'src/app/shared/popup-loading/popup-loadin
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
-  styleUrls: ['./users-list.component.css']
+  styleUrls: ['./users-list.component.scss']
 })
 export class UsersListComponent implements OnInit, OnDestroy {
   users: User[];

@@ -1,6 +1,7 @@
+@import "../../../variables.scss";
 .btn{
-    background: #8e44ad;
-    border:#8e44ad;
+    background: $base-violet;
+    border:$base-violet;
     font-size: 15px;
     font-weight: bold;
     font-style: normal;

@@ -9,7 +9,7 @@ import { PopupLoadingComponent } from 'src/app/shared/popup-loading/popup-loadin
 @Component({
   selector: 'app-user-row',
   templateUrl: './user-row.component.html',
-  styleUrls: ['./user-row.component.css']
+  styleUrls: ['./user-row.component.scss']
 })
 export class UserRowComponent implements OnInit {
   @Input() user;

@@ -1,0 +1,33 @@
+@import '../../../variables.scss';
+button.btn {
+  background: $base-violet;
+  border: $base-violet;
+  font-size: 15px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+}
+.fa.fa-arrow-circle-down {
+  font-size: 30px;
+  color: $base-violet;
+  position: relative;
+  -webkit-animation: bobble 1s ease infinite;
+  animation: bobble 1s ease infinite;
+  display: block;
+  cursor: pointer;
+}
+@keyframes bobble {
+  0% {
+    -webkit-transform: translateY(3px);
+    transform: translateY(3px);
+  }
+  50% {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+  100% {
+    -webkit-transform: translateY(3px);
+    transform: translateY(3px);
+  }
+}

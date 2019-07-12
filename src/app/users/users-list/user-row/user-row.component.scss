@@ -1,15 +1,16 @@
+@import '../../../../variables.scss';
 .list-group-item{
     display: flex;
     cursor: pointer;
 }
 
   .list-group-item:hover { 
-    background-color: #dedede;
+    background-color: $base-grey;
   }
   .list-group-item.active { 
-    background-color:#8e44ad;
-    border-color: #8e44ad;
-    outline-color: #8e44ad;
+    background-color:$base-violet;
+    border-color: $base-violet;
+    outline-color: $base-violet;
     border-radius: 2px;
    
   }
@@ -33,7 +34,7 @@
   .fa{
     margin-right: 10px;
     font-size: 20px;
-    color: #8e44ad;
+    color: $base-violet;
     text-decoration: none!important;
   }
   

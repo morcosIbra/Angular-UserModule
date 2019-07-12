@@ -1,3 +1,4 @@
+@import '../../../../variables.scss';
 .form-control {
     display: inline-block;
     width: auto;
@@ -10,8 +11,8 @@
     letter-spacing: normal;
 }
 .btn.btn-success{
-    background: #8e44ad;
-    border:#8e44ad;
+    background: $base-violet;
+    border:$base-violet;
     
     color:white;
   }
